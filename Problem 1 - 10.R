@@ -21,6 +21,10 @@ isPrime <- function(n){
   return(!any(n%%2:sqrt(n) == 0))
 }
 
+isPalidromic(n){
+  
+  
+}
 
 #Problem 1
 prob1 <- function(max){
