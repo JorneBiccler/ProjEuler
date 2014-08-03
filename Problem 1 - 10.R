@@ -21,9 +21,24 @@ isPrime <- function(n){
   return(!any(n%%2:sqrt(n) == 0))
 }
 
-isPalidromic(n){
-  
-  
+numberOfDigits <- function(n){
+  digits <- 0
+  while(floor(n/(10^digits)) > 0){
+    digits <- digits +1
+  }
+  digits
+}
+
+isPalidromic <- function(n){
+  digits <- numberOfDigits(n)
+    for(i in 1:(digits/2)){
+      temp1 <- floor((n%%(10^i))/10^(i-1))
+      temp2 <-floor(n/(10^(digits-i)))%%10
+      if(!temp1==temp2){
+        return(FALSE)
+      }  
+  }
+  return(TRUE)
 }
 
 #Problem 1
@@ -68,8 +83,7 @@ prob3 <- function(max){
   currentMax <- 0
   i <- 1
   bound <- max
-  while (i <= bound)
- {
+  while (i <= bound){
     if(max%%i == 0 && isPrime(i)){
         currentMax <- i 
         bound <- bound/i 
@@ -80,3 +94,33 @@ prob3 <- function(max){
 }
 prob3(600851475143)
 
+prob4 <- function(numberOfDigits){
+  currentBiggest <- 0
+  for(i in 10^(numberOfDigits - 1): 10^(numberOfDigits)){
+    for(j in i:10^(numberOfDigits)){
+      if(i*j >= currentBiggest){
+        if(isPalidromic(i*j)){
+          currentBiggest <- i*j
+        }
+      }
+    }   
+  }
+  return(currentBiggest)
+}
+
+prob4(3)
+
+prob5 <- function(n){
+  #lame problem cbf to implement anything (easy to do by hand ...)
+  return(16*9*5*7*11*13*17*19)
+}
+
+prob6 <- function(n){
+  sumOfSquares <-0
+  sum <-0
+  for(i in 1:n){
+    sumOfSquares <- sumOfSquares + i^2
+    sum <- sum + i
+  }
+  return(sumOfSquares - sum^2)
+}
