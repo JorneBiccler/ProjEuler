@@ -46,3 +46,14 @@ nthPrimeLowerBound <- function(n) {
 nthPrimeUpperBound <- function(n) {
   n*(log(n) + log(log(n)))
 } 
+
+allPrimes <- function(n){
+  #return all primes <= n/ basic (not super efficient) implimentation of the well known sieve
+  x <- 2:n
+  i <- 1
+  while(i <= sqrt(n)){
+    x[x !=(i+1) & x%%(i+1) == 0] <- 0
+    i <- i+1
+  }
+  x[x !=0]
+}

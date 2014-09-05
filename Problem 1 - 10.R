@@ -1,6 +1,6 @@
 #source Functions
 setwd("~/R/ProjEuler/ProjEuler")
-source(Functions.R)
+source("Functions.R")
 
 #Problem 1
 prob1 <- function(max){
@@ -87,5 +87,18 @@ prob6 <- function(n){
 }
 
 prob7 <- function(n) {
-  
+  allPrimes(nthPrimeUpperBound(n))[n]
+}
+
+prob9 <- function(){
+  for(i in 1:1000){
+    for(j in i:1000){
+      if(floor(sqrt(i^2 + j^2)) ==sqrt(i^2 + j^2) && (i +j + sqrt(i^2 +j^2) == 1000))
+        return(i*j*sqrt(i^2 +j^2))
+    }
+  }
+}
+
+prob10 <- function(n) {
+  sum(allPrimes(n))
 }
